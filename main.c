@@ -9,8 +9,8 @@ void *reorg(char *s, char*ot)
     int len1,kol,len;
     kol=0;
     len=0;
-    for (int i=0; i<strlen(s);i++){
-        if ((s[i]==' ')||(s[i]=='\t')||(s[i]=='\n')){
+    for (int i=0; i<=strlen(s);i++){
+        if ((s[i]==' ')||(s[i]=='\t')||(i==strlen(s))){
             if (kol==0) {
                 kol++;
                 len1=len;
@@ -18,7 +18,7 @@ void *reorg(char *s, char*ot)
                 len=0;
             }
             if ((kol!=0)&&(len1==len)){
-                strncpy(otvet+(kol*len1),s+(i-len)-1,len+1);
+                strncpy(otvet+(kol*len1+kol-1),s+(i-len)-1,len+1);
                 kol++;
                 len=0;
             }
