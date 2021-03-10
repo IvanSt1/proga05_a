@@ -34,10 +34,7 @@ void *reorg(char *s, char*ot)
 int main() {
     char* str;
     char *str1;
-    int status1;
-    status1=1;
-    while (status1 > 0) {
-        status1 = scanf(" %m[^\n]", &str);
+    while (scanf(" %m[^\n]", &str) != EOF) {
         printf("Source string: %s\n",str);
         str1=(char*)calloc(strlen(str), sizeof(char));
         reorg(str,str1);
@@ -47,8 +44,6 @@ int main() {
 
     }
 
-    if (status1 == EOF)
-        printf("EXITING AT EOF");
     return 0;
 }
 
