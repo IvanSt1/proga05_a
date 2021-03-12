@@ -9,8 +9,9 @@ void *reorg(char *s, char*ot)
     int len1,kol,len;
     kol=0;
     len=0;
-    for (int i=0; i<=strlen(s);i++){
-        if ((s[i]==' ')||(s[i]=='\t')||(i==strlen(s))){
+    int lenstr= strlen(s);
+    for (int i=0; i<=lenstr;i++){//strchr
+        if ((s[i]==' ')||(s[i]=='\t')||(i==lenstr)){
             if (kol==0) {
                 kol++;
                 len1=len;
@@ -32,15 +33,18 @@ void *reorg(char *s, char*ot)
 }
 
 int main() {
-    char* str;
+    char *str;
     char *str1;
     while (scanf(" %m[^\n]", &str) != EOF) {
         printf("Source string: %s\n",str);
+
         str1=(char*)calloc(strlen(str), sizeof(char));
-        reorg(str,str1);
-        printf("Result string: %s \n",str1);
-        free(str1);
-        free(str);
+        if (str1!=NULL) {
+            reorg(str, str1);
+            printf("Result string: %s \n", str1);
+            free(str1);
+            free(str);
+        }
 
     }
 
